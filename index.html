@@ -1,102 +1,230 @@
-<!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html lang="zh">
 <head>
-	<title>Our Love Story</title>
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-	<style type="text/css">
-		@font-face {
-			font-family: digit;
-			src: url('digital-7_mono.ttf') format("truetype");
-		}
-	</style>
-	<link href="css/default.css" type="text/css" rel="stylesheet">
-	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/garden.js"></script>
-    <script type="text/javascript" src="js/functions.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎂我女孩子的生日小祝福🎂</title>
+  <style>
+    /* 基础样式 */
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff0f6;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+      text-align: center;
+    }
+    .container {
+      max-width: 720px;
+      margin: auto;
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+      text-align: center;
+      color: #d63384;
+    }
+    .section {
+      margin: 20px 0;
+    }
+    /* 视频区样式 */
+    .video-container video {
+      width: 100%;
+      border-radius: 8px;
+      display: block;
+    }
+    .video-container p {
+      text-align: center;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    /* 互动谜题区样式 */
+    .puzzle {
+      background: #f8d7da;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .puzzle p {
+      font-size: 18px;
+      text-align: center;
+    }
+    .puzzle input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px 0;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+    }
+    .button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background: #ff6f91;
+      color: #fff;
+      text-align: center;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .feedback {
+      text-align: center;
+      font-weight: bold;
+      font-size: 18px;
+      margin-top: 10px;
+    }
+    .hidden {
+      display: none;
+    }
+    /* 信封样式调整：尺寸更大 */
+    .envelope {
+      width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      font-size: 60px;
+      position: relative;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    /* 蛋糕样式及动画 */
+    #cake {
+      font-size: 100px;
+      margin: 20px auto;
+    }
+    .animate-cake {
+      animation: cakeZoom 2s forwards;
+    }
+    @keyframes cakeZoom {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(3);
+        opacity: 0;
+      }
+    }
+    /* 未来约定区 */
+    .future {
+      background: #d1e7dd;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 18px;
+    }
+    .time-highlight {
+    font-family: 'Courier New', monospace;
+    font-size: 1.5em;
+    color: #ff69b4;
+    background: linear-gradient(45deg, #fff5f5, #ffe8f0);
+    padding: 8px 20px;
+    border-radius: 15px;
+    display: inline-block;
+    margin: 10px 0;
+    }
+  </style>
+  <style>
+    /* 🧡新增入场动画 */
+    .wishes p {
+      opacity: 0;
+      transform: translateX(-30px);
+      animation: slideIn 0.8s forwards;
+    }
+    .wishes p:nth-child(1) { animation-delay: 0.3s; }
+    .wishes p:nth-child(2) { animation-delay: 0.6s; }
+    .wishes p:nth-child(3) { animation-delay: 0.9s; }
+    
+    @keyframes slideIn {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* 🧡鼠标悬停趣味效果 */
+    .future p:hover {
+      transform: rotate(2deg);
+      text-shadow: 2px 2px 2px rgba(255,105,180,0.3);
+      transition: 0.3s;
+    }
+  </style>
 </head>
-
 <body>
-	<div id="mainDiv">
-		<div id="content">
-			<div id="code">
-				<span class="comments">/**</span><br />
-				<span class="space"/><span class="comments">* We are both Fudan SSers and programmers,</span><br />
-				<span class="space"/><span class="comments">* so I write some code to celebrate our 1st anniversary.</span><br />
-				<span class="space"/><span class="comments">*/</span><br />
-				Boy i = <span class="keyword">new</span> Boy(<span class="string">"hackerzhou"</span>);<br />
-				Girl u = <span class="keyword">new</span> Girl(<span class="string">"MaryNee"</span>);<br />
-				<span class="comments">// Nov 2, 2010, I told you I love you. </span><br />
-				i.love(u);<br />
-				<span class="comments">// Luckily, you accepted and became my girlfriend eversince.</span><br />
-				u.accepted();<br />
-				<span class="comments">// Since then, I miss u every day.</span><br />
-				i.miss(u);<br />
-				<span class="comments">// And take care of u and our love.</span><br />
-				i.takeCareOf(u);<br />
-				<span class="comments">// You say that you won't be so easy to marry me.</span><br />
-				<span class="comments">// So I keep waiting and I have confidence that you will.</span><br />
-				<span class="keyword">boolean</span> isHesitate = <span class="keyword">true</span>;<br />
-				<span class="keyword">while</span> (isHesitate) {<br />
-				<span class="placeholder"/>i.waitFor(u);<br />
-				<span class="placeholder"/><span class="comments">// I think it is an important decision</span><br />
-				<span class="placeholder"/><span class="comments">// and you should think it over.</span><br />
-				<span class="placeholder"/>isHesitate = u.thinkOver();<br />
-				}<br />
-				<span class="comments">// After a romantic wedding, we will live happily ever after.</span><br />
-				i.marry(u);<br />
-				i.liveHappilyWith(u);<br />
-			</div>
-			<div id="loveHeart">
-				<canvas id="garden"></canvas>
-				<div id="words">
-					<div id="messages">
-						Minyue, I have fallen in love with you for
-						<div id="elapseClock"></div>
-					</div>
-					<div id="loveu">
-						Love u forever and ever.<br/>
-						<div class="signature">- hackerzhou</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div id="copyright">
-			Inspired by <a href="http://www.openrise.com/lab/FlowerPower/">FlowerPower</a> project.<br />
-			Copyright © 2011 <a href='http://hackerzhou.me'>hackerzhou.me</a> 2009-2011
-		</div>
-	</div>
-	<script type="text/javascript">
-		var offsetX = $("#loveHeart").width() / 2;
-		var offsetY = $("#loveHeart").height() / 2 - 55;
-		var together = new Date();
-		together.setFullYear(2010, 10, 2);
-		together.setHours(20);
-		together.setMinutes(0);
-		together.setSeconds(0);
-		together.setMilliseconds(0);
-		
-		if (!document.createElement('canvas').getContext) {
-			var msg = document.createElement("div");
-			msg.id = "errorMsg";
-			msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
-			document.body.appendChild(msg);
-			$("#code").css("display", "none")
-			$("#copyright").css("position", "absolute");
-			$("#copyright").css("bottom", "10px");
-		    document.execCommand("stop");
-		} else {
-			setTimeout(function () {
-				startHeartAnimation();
-			}, 5000);
+  <!-- 大蛋糕：初始显示 -->
+  <div id="cake">🎂</div>
 
-			timeElapse(together);
-			setInterval(function () {
-				timeElapse(together);
-			}, 500);
+  <!-- 信封 -->
+  <div class="envelope" onclick="this.style.transform='rotate(5deg) scale(1.1)'">
+    ✉️ 点击打开祝福
+  </div>
 
-			adjustCodePosition();
-			$("#code").typewriter();
-		}
-	</script>
+  <!-- 主要内容 -->
+  <div class="container" id="mainMessage" style="display: none;">
+    <!-- 欢迎开篇 -->
+    <h1>🎂生日小祝福🎂</h1>
+    <p class="time-highlight">⏳ 时间钟摆刚刚好停在<br>我们相遇的第{days}天</p>
+    
+    <!-- 真情视频区域 -->
+    <div class="section video-container">
+      <video controls>
+        <source src="video.mp4" type="video/mp4">
+        当前浏览器不支持视频播放，请更新浏览器。
+      </video>
+      <div class="message-box">
+        <p>愿你能开心一笑</p>
+      </div>
+    </div>
+
+    <!-- 未来约定区域 -->
+    <div class="section puzzle">
+      <h2>我的祝福语</h2>
+      <p class="highlight">记得你第一次跟我说生日日期时，<br>我就悄悄记在了手机提醒里</p>
+      <p>在这个特别的日子，想对你说：</p>
+      <p>🌸 愿平安喜乐常伴左右</p>
+      <p>🎨 愿生活总有斑斓色彩</p>
+      <p>☕️ 愿每个清晨夜晚都有温暖相伴</p>
+    </div>
+  </div>
+  
+  <script>
+    // 信封点击动画及展示主要内容，并触发蛋糕动画
+    document.querySelector('.envelope').addEventListener('click', function() {
+      // 隐藏信封
+      this.style.display = 'none';
+      // 显示主要内容区域
+      document.getElementById('mainMessage').style.display = 'block';
+
+      // 触发蛋糕动画
+      const cake = document.getElementById('cake');
+      cake.classList.add('animate-cake');
+      // 动画 2s 后隐藏蛋糕
+      setTimeout(function(){
+        cake.style.display = 'none';
+      }, 2000);
+    });
+
+    function checkAnswer() {
+      const answerInput = document.getElementById('answer');
+      const feedback = document.getElementById('feedback');
+      const secret = document.getElementById('secret');
+      const userAnswer = answerInput.value.trim();
+      
+      if (userAnswer === '') {
+        feedback.textContent = '请先输入答案哦~';
+        return;
+      }
+      
+      // 预设谜底为 "回忆"
+      if (userAnswer === '回忆') {
+        feedback.textContent = '正确答案！满满爱意传递中~';
+        secret.classList.remove('hidden');
+      } else {
+        feedback.textContent = '答案不正确，再想一想吧~';
+      }
+    }
+  </script>
 </body>
 </html>
