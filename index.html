@@ -186,63 +186,60 @@
     }
 
     /* 氣球漂浮效果 */
-    .balloon {
-        position: absolute;
-        bottom: -150px;
-        width: 50px;
-        height: 70px;
-        border-radius: 50%;
-        animation: floatBalloon 7s linear infinite;
-        opacity: 0.9;
+    .balloon-area {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: #fdecd2;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+  .balloon {
+    position: absolute;
+    bottom: -150px;
+    width: 50px;
+    height: 70px;
+    border-radius: 50%;
+    background: #ff6f91;
+    animation: floatBalloon 7s linear infinite;
+    opacity: 0.9;
+  }
+  @keyframes floatBalloon {
+    0% {
+      transform: translateX(0) rotate(0deg);
     }
-    .balloon {
-      position: absolute;
-      bottom: -150px;
-      width: 50px;
-      height: 70px;
-      border-radius: 50%;
-      background: #ff6f91;
-      animation: floatBalloon 7s linear infinite;
-      opacity: 0.9;
+    100% {
+      transform: translateX(-50px) rotate(360deg);
+      bottom: 100%;
     }
-
-    /* 调整水平位置，使气球居中分布 */
-    .balloon:nth-child(1) { left: 20%; }
-    .balloon:nth-child(2) { left: 35%; background: #fdb515; animation-duration: 6s; animation-delay: 1s; }
-    .balloon:nth-child(3) { left: 50%; background: #3b82f6; animation-duration: 8s; animation-delay: 2s; }
-    .balloon:nth-child(4) { left: 65%; background: #84cc16; animation-duration: 7.5s; animation-delay: 3s; }
-    .balloon:nth-child(5) { left: 80%; background: #ff77e9; animation-duration: 9s; animation-delay: 1.5s; }
-
-    @keyframes floatBalloon {
-      0% {
-        transform: translateX(0) rotate(0deg);
-      }
-      100% {
-        transform: translateX(-50px) rotate(360deg);
-        bottom: 100%;
-      }
-    }
-    /* 不同颜色的气球 */
-    .balloon:nth-child(2) {
-      background: #fdb515;
-      animation-duration: 6s;
-      animation-delay: 1s;
-    }
-    .balloon:nth-child(3) {
-      background: #3b82f6;
-      animation-duration: 8s;
-      animation-delay: 2s;
-    }
-    .balloon:nth-child(4) {
-      background: #84cc16;
-      animation-duration: 7.5s;
-      animation-delay: 3s;
-    }
-    .balloon:nth-child(5) {
-      background: #ff77e9;
-      animation-duration: 9s;
-      animation-delay: 1.5s;
-    }
+  }
+  /* 定位气球在容器内 */
+  .balloon-area .balloon:nth-child(1) { left: 10%; }
+  .balloon-area .balloon:nth-child(2) { 
+    left: 30%; 
+    background: #fdb515;
+    animation-duration: 6s;
+    animation-delay: 1s;
+  }
+  .balloon-area .balloon:nth-child(3) { 
+    left: 50%; 
+    background: #3b82f6;
+    animation-duration: 8s;
+    animation-delay: 2s;
+  }
+  .balloon-area .balloon:nth-child(4) { 
+    left: 70%; 
+    background: #84cc16;
+    animation-duration: 7.5s;
+    animation-delay: 3s;
+  }
+  .balloon-area .balloon:nth-child(5) { 
+    left: 90%; 
+    background: #ff77e9;
+    animation-duration: 9s;
+    animation-delay: 1.5s;
+  }
 
     /* ============================= */
     /* 再新增另一个new-section的样式 */
