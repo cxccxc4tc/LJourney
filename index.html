@@ -13,6 +13,7 @@
       padding: 20px;
       color: #333;
       text-align: center;
+      overflow-x: hidden; /* 防止横向滚动条 */
     }
     .container {
       max-width: 720px;
@@ -116,18 +117,18 @@
       font-size: 18px;
     }
     .time-highlight {
-    font-family: 'Courier New', monospace;
-    font-size: 1.5em;
-    color: #ff69b4;
-    background: linear-gradient(45deg, #fff5f5, #ffe8f0);
-    padding: 8px 20px;
-    border-radius: 15px;
-    display: inline-block;
-    margin: 10px 0;
+      font-family: 'Courier New', monospace;
+      font-size: 1.5em;
+      color: #ff69b4;
+      background: linear-gradient(45deg, #fff5f5, #ffe8f0);
+      padding: 8px 20px;
+      border-radius: 15px;
+      display: inline-block;
+      margin: 10px 0;
     }
   </style>
   <style>
-    /* 🧡新增入场动画 */
+    /* 🧡 新增入场动画 */
     .wishes p {
       opacity: 0;
       transform: translateX(-30px);
@@ -144,11 +145,133 @@
       }
     }
 
-    /* 🧡鼠标悬停趣味效果 */
+    /* 🧡 鼠标悬停趣味效果 */
     .future p:hover {
       transform: rotate(2deg);
       text-shadow: 2px 2px 2px rgba(255,105,180,0.3);
       transition: 0.3s;
+    }
+
+    /* ============================= */
+    /* 下面为新增有趣内容的样式     */
+    /* ============================= */
+    .new-section {
+      margin: 40px auto;
+      max-width: 700px;
+      text-align: center;
+      background: #fff7e6;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+    }
+    .new-section h2 {
+      color: #ff8c00;
+      margin-bottom: 15px;
+    }
+    .new-section .fortune-btn {
+      padding: 10px 20px;
+      background: #ff8c00;
+      color: #fff;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+    .fortune-message {
+      font-size: 18px;
+      color: #c0392b;
+      margin-top: 10px;
+      min-height: 24px;
+    }
+
+    /* 氣球漂浮效果 */
+    .balloon-area {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      background: #fdecd2;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+    .balloon {
+      position: absolute;
+      bottom: -150px;
+      width: 50px;
+      height: 70px;
+      border-radius: 50%;
+      background: #ff6f91;
+      animation: floatBalloon 7s linear infinite;
+      opacity: 0.9;
+    }
+    @keyframes floatBalloon {
+      0% {
+        transform: translateX(0) rotate(0deg);
+      }
+      100% {
+        transform: translateX(-50px) rotate(360deg);
+        bottom: 100%;
+      }
+    }
+    /* 不同颜色的气球 */
+    .balloon:nth-child(2) {
+      background: #fdb515;
+      animation-duration: 6s;
+      animation-delay: 1s;
+    }
+    .balloon:nth-child(3) {
+      background: #3b82f6;
+      animation-duration: 8s;
+      animation-delay: 2s;
+    }
+    .balloon:nth-child(4) {
+      background: #84cc16;
+      animation-duration: 7.5s;
+      animation-delay: 3s;
+    }
+    .balloon:nth-child(5) {
+      background: #ff77e9;
+      animation-duration: 9s;
+      animation-delay: 1.5s;
+    }
+
+    /* ============================= */
+    /* 再新增另一个new-section的样式 */
+    /* ============================= */
+    .new-section-quiz {
+      margin: 40px auto;
+      max-width: 700px;
+      text-align: center;
+      background: #e1f6ff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+    }
+    .new-section-quiz h2 {
+      color: #007acc;
+      margin-bottom: 15px;
+    }
+    .quiz-question {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+    .quiz-option {
+      display: block;
+      padding: 8px 0;
+      cursor: pointer;
+      color: #444;
+      transition: 0.2s;
+    }
+    .quiz-option:hover {
+      color: #007acc;
+      font-weight: bold;
+    }
+    .quiz-result {
+      font-size: 18px;
+      color: #d63384;
+      margin-top: 20px;
+      min-height: 24px;
     }
   </style>
 </head>
@@ -168,10 +291,10 @@
     
     <!-- 真情视频区域 -->
     <div class="section video-container">
-      <video controls>
+      <!-- <video controls>
         <source src="video.mp4" type="video/mp4">
         当前浏览器不支持视频播放，请更新浏览器。
-      </video>
+      </video> -->
     </div>
 
     <!-- 未来约定区域 -->
@@ -186,6 +309,40 @@
     </div>
   </div>
   
+  <!-- ======================= -->
+  <!--  下方为第一个新增区块  -->
+  <!-- ======================= -->
+  <div class="new-section" id="funSection" style="display: none;">
+    <h2>✨ 生日小乐趣 ✨</h2>
+    <p>希望今天是你最幸运的一天，来抽张“神秘生日签”瞧瞧吧？</p>
+    <button class="fortune-btn" onclick="showFortune()">点击抽签</button>
+    <div class="fortune-message" id="fortuneMessage"></div>
+
+    <!-- 氣球漂浮区域 -->
+    <div class="balloon-area" id="balloonArea">
+      <!-- balloon 数量可多可少，这里示范五个 -->
+      <div class="balloon"></div>
+      <div class="balloon"></div>
+      <div class="balloon"></div>
+      <div class="balloon"></div>
+      <div class="balloon"></div>
+    </div>
+  </div>
+
+  <!-- ============================ -->
+  <!-- 再新增一个新的new-section   -->
+  <!-- ============================ -->
+  <!-- <div class="new-section-quiz" id="quizSection" style="display: none;">
+    <h2>🍰 小测试：你是哪一种甜点？</h2>
+    <p class="quiz-question">请选择你更喜欢的场景：</p>
+    <div class="quiz-option" onclick="pickAnswer(0)">A. 喜欢在安静的咖啡馆独自放空</div>
+    <div class="quiz-option" onclick="pickAnswer(1)">B. 喜欢和朋友一起到处吃喝玩乐</div>
+    <div class="quiz-option" onclick="pickAnswer(2)">C. 喜欢热闹的聚会和音乐</div>
+    <div class="quiz-option" onclick="pickAnswer(3)">D. 喜欢户外运动和大自然</div>
+
+    <div class="quiz-result" id="quizResult"></div>
+  </div> -->
+
   <script>
     // 信封点击动画及展示主要内容，并触发蛋糕动画
     document.querySelector('.envelope').addEventListener('click', function() {
@@ -200,7 +357,14 @@
       // 动画 2s 后隐藏蛋糕
       setTimeout(function(){
         cake.style.display = 'none';
-      }, 2000);
+        // 等蛋糕收场后，再显示新模块
+        document.getElementById('funSection').style.display = 'block';
+        
+        // 额外再等1.5秒后，显示第二个new-section
+        // setTimeout(function(){
+        //   document.getElementById('quizSection').style.display = 'block';
+        // }, 1500);
+      }, 500);
     });
 
     function checkAnswer() {
@@ -222,6 +386,36 @@
         feedback.textContent = '答案不正确，再想一想吧~';
       }
     }
+
+    /* ============================= */
+    /*       新增有趣功能脚本       */
+    /* ============================= */
+    // 1. 生日签
+    const fortunes = [
+      "今天是你最酷的日子，记得多喝点温水哦！",
+      "新的一岁里，希望我们都能邂逅更多惊喜和小确幸~",
+      "幸运之神说：抓住这颗幸运星就会好运不断！"
+    ];
+
+    function showFortune() {
+      const randomIndex = Math.floor(Math.random() * fortunes.length);
+      const fortuneText = fortunes[randomIndex];
+      document.getElementById('fortuneMessage').textContent = fortuneText;
+    }
+
+    // 2. 小测试：你是哪一种甜点？
+    // 简单地根据选项映射到不同结果
+    // const dessertResults = [
+    //   "你就像一杯香浓的拿铁，温暖又沉静！",
+    //   "你就是香甜缤纷的奶油蛋糕，人见人爱！",
+    //   "你是炸开的爆米花，和欢乐最配哦！",
+    //   "你是清爽的抹茶冰淇淋，清新脱俗，活力满满～"
+    // ];
+
+    // function pickAnswer(index) {
+    //   const result = dessertResults[index];
+    //   document.getElementById('quizResult').textContent = "测试结果：" + result;
+    // }
   </script>
 </body>
 </html>
